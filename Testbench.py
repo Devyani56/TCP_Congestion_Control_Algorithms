@@ -1,7 +1,7 @@
 # Simulation Testbench
 #
-# Author: Neha Karanjkar
-# Date: 6 April 2020
+# Author: Devyani Remulkar
+# Date: 23 April 2024
 
 import simpy
 from Applications import SendingApplication,ReceivingApplication
@@ -44,7 +44,7 @@ channel_for_ack.receiver = rdt_sender
 # Run simulation, and print status information every now and then.
 # Run the simulation until TOTAL_SIMULATION_TIME elapses OR the receiver receives a certain 
 # number of messages in total, whichever occurs earlier.
-TOTAL_SIMULATION_TIME = 500  # <==== Total simulation time. Increase it as you like.
+TOTAL_SIMULATION_TIME = 300 # <==== Total simulation time. Increase it as you like.
 t = 0
 while t < TOTAL_SIMULATION_TIME:
     if env.peek() > t:
@@ -80,15 +80,19 @@ values=channel_for_data.bandwidth_util.values()
 keys1=channel_for_data.cwnd_values.keys()
 values1=channel_for_data.cwnd_values.values()
 
+plt.figure()
 plt.plot(keys, values)
+plt.xlabel('Time')
+plt.ylabel('Bandwidth Utilization')
 plt.show()
 
+# Plot for keys1 and values1
+plt.figure()
 plt.plot(keys1, values1)
+plt.xlabel('Time')
+plt.ylabel('CWND')
 plt.show()
 #print("Total number of re-transmitted ACK packets=%d (%0.2f%% of total packets sent)"%(rdt_receiver.num_retransmissions,(rdt_receiver.num_retransmissions/rdt_receiver.total_packets_sent*100.0)))
 
 #print("Bandwidth Utilization for the DATA channel=%0.2f%%"%(channel_for_data.channel_utilization_time/t*100.0))
 #print("Utilization for the  ACK channel=%0.2f%%"%(channel_for_ack.channel_utilization_time/t*100.0))
-
-
-
