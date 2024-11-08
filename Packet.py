@@ -5,10 +5,10 @@
 #	payload: the data contained in the packet,
 #	packet_length: length of the entire packet (in bits)
 #	seq_num: the packet sequence number,
-#	corrupted: a flag, which can be True or False
+#	
 #	
 #
-# Author: Neha Karanjkar
+# Author: Devyani Remulkar
 
 
 class Packet(object):
@@ -26,4 +26,3 @@ class Packet(object):
 	# this function can be used to print a packet
 	def __str__(self):
 		return "Packet(seq_num=%d, payload=%s, packet_length=%d bytes)"% (self.seq_num, self.payload, self.packet_length)
-
