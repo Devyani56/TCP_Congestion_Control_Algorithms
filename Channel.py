@@ -1,11 +1,11 @@
 # SimPy model for an unreliable communication channel.
 #
 #	A packet sent over this channel:
-#		- can get corrupted, with probability Pc
+#		
 #		- can get lost, with probability Pl
 #		- reaches the other end after a "propagation_delay" amount of time, if it is not lost.
 #
-# Author: Neha Karanjkar
+# Author: Devyani Remulkar
 
 
 import simpy
