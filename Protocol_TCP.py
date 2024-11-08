@@ -1,4 +1,7 @@
-
+# Congestion control algorithms
+#
+# Author: Devyani Remulkar
+# Date: 23 April 2024
 import simpy
 import random
 import sys
@@ -168,8 +171,8 @@ class TCP_Sender(object):
             self.cwnd += self.MSS
         elif self.dupACKcount == 3 and self.state != self.Fast_recovery_state:
             self.ssthresh = self.cwnd / 2
-            self.ssthresh = self.a2+self.b2*self.cwnd
-            #self.cwnd = self.ssthresh + 3 * self.MSS
+            #self.ssthresh = self.a2+self.b2*self.cwnd
+            self.cwnd = self.ssthresh + 3 * self.MSS
             print(self.cwnd)
             self.stop_timer(0)
             self.start_timer(0)
